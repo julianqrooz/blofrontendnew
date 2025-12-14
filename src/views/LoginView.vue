@@ -23,11 +23,11 @@ const login = async () => {
         <!-- النصوص الترحيبية -->
         <div class="col-12 col-lg-6 text-center text-lg-start">
           <h1 class="display-5 display-md-4 fw-bold text-body-emphasis mb-3">
-            Welcome Back! 👋
+            مرحبًا بعودتك! 👋
           </h1>
           <p class="lead fs-5 text-muted">
-            Sign in to continue exploring new posts, manage your profile, and
-            join the conversation. We missed you!
+            سجّل الدخول لمواصلة استكشاف المنشورات الجديدة، وإدارة ملفك الشخصي،
+            والانضمام إلى الحوار. لقد اشتقنا إليك!
           </p>
         </div>
 
@@ -46,7 +46,7 @@ const login = async () => {
                 placeholder="name@example.com"
                 required
               />
-              <label for="floatingInput">Email address</label>
+              <label for="floatingInput">البريد الإلكتروني </label>
             </div>
 
             <div class="form-floating mb-4">
@@ -58,29 +58,29 @@ const login = async () => {
                 placeholder="Password"
                 required
               />
-              <label for="floatingPassword">Password</label>
+              <label for="floatingPassword">كلمة المرور</label>
             </div>
 
             <button
               class="w-100 btn btn-primary btn-lg py-3 fw-bold"
               type="submit"
             >
-              Log In
+              تسجيل الدخول
             </button>
 
             <hr class="my-4 border-secondary" />
 
             <div class="text-center">
               <small class="text-muted">
-                Don't have an account?
+                ليس لديك حساب؟
                 <router-link to="/register" class="text-primary fw-bold">
-                  Sign Up
+                  انشاء حساب
                 </router-link>
               </small>
             </div>
 
             <small class="d-block text-center text-muted mt-3">
-              By clicking Log In, you agree to the terms of use.
+              بالنقر على "تسجيل الدخول"، فإنك توافق على شروط الاستخدام.
             </small>
           </form>
         </div>
