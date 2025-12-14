@@ -40,7 +40,7 @@ const viewPost = (id) => {
       <!-- العنوان الرئيسي -->
       <div class="row gx-5 justify-content-center mb-5">
         <div class="col-lg-8 col-xl-7 text-center">
-          <h2 class="display-5 fw-bolder mb-4">من مدونتنا</h2>
+          <h2 class="display-5 fw-bolder mb-4">المقالات</h2>
           <p class="lead fs-5 text-muted px-3 px-md-0">
             مساحة مخصصة لتقديم رؤى عميقة، دليل عملي، ومناقشات مدروسة في مجالات
             التقنية، نمط الحياة، والإبداع.
