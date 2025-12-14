@@ -16,12 +16,11 @@ import FooterHome from "../components/FooterHome.vue";
               <h1
                 class="display-4 display-md-3 fw-bolder text-white mb-3 mb-md-4"
               >
-                Welcome to Julia Blog
+                مرحبا بك
               </h1>
               <p class="lead fw-normal text-white-50 mb-4 mb-md-5 fs-5">
-                Welcome to Julia Blog, your dedicated space for in-depth
-                insights, practical guides, and thoughtful discussions across
-                technology, lifestyle, and creative pursuits.
+                أهلاً بكم ، مساحتكم المخصصة للحصول على رؤى معمقة وأدلة عملية
+                ومناقشات هادفة حول التكنولوجيا وأسلوب الحياة والمساعي الإبداعية.
               </p>
 
               <!-- الأزرار -->
@@ -32,13 +31,13 @@ import FooterHome from "../components/FooterHome.vue";
                   class="btn btn-primary btn-lg px-5 py-3 me-sm-3"
                   to="/register"
                 >
-                  Sign Up
+                  تسجيل
                 </router-link>
                 <router-link
                   class="btn btn-outline-light btn-lg px-5 py-3"
                   to="/login"
                 >
-                  Log In
+                  تسجيل الدخول
                 </router-link>
               </div>
             </div>
