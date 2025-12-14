@@ -11,17 +11,30 @@ const email = ref('')
 const password = ref('')
 
 const register = async () => {
-  if (!name.value || !email.value || password.value) {
-    alert('يرجى ملء جميع الحقول ')
+  // تحقق أفضل وأوضح
+  if (!name.value.trim()) {
+    alert('يرجى كتابة اسمك')
+    return
+  }
+  if (!email.value.trim()) {
+    alert('يرجى كتابة بريدك الإلكتروني')
+    return
+  }
+  if (!password.value || password.value.length < 6) {
+    alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل')
     return
   }
 
   try {
-    await authStore.register({ name: name.value, email: email.value, password: password.value })
+    await authStore.register({
+      name: name.value.trim(),
+      email: email.value.trim(),
+      password: password.value
+    })
     alert('تم إنشاء الحساب بنجاح!')
     router.push('/')
   } catch (err) {
-    alert('فشل التسجيل، ربما البريد مستخدم بالفعل')
+    alert('فشل التسجيل، ربما البريد الإلكتروني مستخدم بالفعل')
   }
 }
 </script>
