@@ -5,14 +5,20 @@
         class="row align-items-center justify-content-between flex-column flex-sm-row"
       >
         <div class="col-auto">
-          <div class="small m-0 text-white">Copyright © Julia Blog 2025</div>
+          <div class="small m-0 text-white">Copyright © Julia 2025</div>
         </div>
         <div class="col-auto">
-          <a class="link-light small" href="#!">Privacy</a>
+          <router-link class="link-light small" to="/privacy"
+            >خصوصية</router-link
+          >
           <span class="text-white mx-1">·</span>
-          <a class="link-light small" href="#!">Terms</a>
+          <router-link class="link-light small" to="/terms"
+            >الشروط والأحكام</router-link
+          >
           <span class="text-white mx-1">·</span>
-          <a class="link-light small" href="#!">Contact</a>
+          <router-link class="link-light small" to="/contact"
+            >اتصال</router-link
+          >
         </div>
       </div>
     </div>
