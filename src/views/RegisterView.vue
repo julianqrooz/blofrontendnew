@@ -1,42 +1,27 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '../stores/counter'  // تأكد من المسار
-
-const router = useRouter()
-const authStore = useAuthStore()
-
-const name = ref('')
-const email = ref('')
-const password = ref('')
-
-const register = async () => {
-  // تحقق أفضل وأوضح
-  if (!name.value.trim()) {
-    alert('يرجى كتابة اسمك')
-    return
-  }
-  if (!email.value.trim()) {
-    alert('يرجى كتابة بريدك الإلكتروني')
-    return
-  }
-  if (!password.value || password.value.length < 6) {
-    alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل')
-    return
-  }
-
+import FooterHome from "../components/FooterHome.vue";
+import { api, useAuthStore } from "../stores/counter";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+const name = ref("");
+const email = ref("");
+const password = ref("");
+const authuser = useAuthStore();
+const router = useRouter();
+const rejister = async () => {
   try {
-    await authStore.register({
-      name: name.value.trim(),
-      email: email.value.trim(),
-      password: password.value
-    })
-    alert('تم إنشاء الحساب بنجاح!')
-    router.push('/')
-  } catch (err) {
-    alert('فشل التسجيل، ربما البريد الإلكتروني مستخدم بالفعل')
+    if (!name.value || !email.value || !password.value)
+      return alert("كل الحقول مطلوبه");
+    await authuser.register({
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    });
+    router.push("/");
+  } catch {
+    alert("فشل التسجيل");
   }
-}
+};
 </script>
 <template>
   <div class="d-flex flex-column min-vh-100">
@@ -45,19 +30,18 @@ const register = async () => {
         <!-- النصوص الترحيبية -->
         <div class="col-12 col-lg-6 text-center text-lg-start">
           <h1 class="display-5 display-md-4 fw-bold text-body-emphasis mb-3">
-            Create Your Account 🚀
+            أنشئ حسابك 🚀
           </h1>
           <p class="lead fs-5 text-muted">
-            Create your free account today to get full access to exclusive
-            articles, personalized content, and the ability to comment on posts.
-            We're excited to have you!
+            أنشئ حسابك المجاني اليوم لتحصل على وصول كامل إلى مقالات حصرية،
+            ومحتوى مُخصّص، وإمكانية التعليق على المنشورات. يسعدنا انضمامك إلينا!
           </p>
         </div>
 
         <!-- الفورم -->
         <div class="col-12 col-md-8 col-lg-5 col-xl-4">
           <form
-            @submit.prevent="register"
+            @submit.prevent="rejister"
             class="p-4 p-md-5 border rounded-4 shadow-lg bg-white"
           >
             <div class="form-floating mb-4">
@@ -69,7 +53,7 @@ const register = async () => {
                 placeholder="Your Name"
                 required
               />
-              <label for="floatingName">Your Name</label>
+              <label for="floatingName">أسمك</label>
             </div>
 
             <div class="form-floating mb-4">
@@ -81,7 +65,7 @@ const register = async () => {
                 placeholder="name@example.com"
                 required
               />
-              <label for="floatingEmail">Email Address</label>
+              <label for="floatingEmail">البريد الإلكتروني</label>
             </div>
 
             <div class="form-floating mb-4">
@@ -92,31 +76,31 @@ const register = async () => {
                 id="floatingPassword"
                 placeholder="Password"
                 required
-               
+                minlength="6"
               />
-              <label for="floatingPassword">Password</label>
+              <label for="floatingPassword"> كلمة المرور</label>
             </div>
 
             <button
               class="w-100 btn btn-primary btn-lg py-3 fw-bold"
               type="submit"
             >
-              Sign Up
+              انشاء حساب
             </button>
 
             <hr class="my-4 border-secondary" />
 
             <div class="text-center">
               <small class="text-muted">
-                Already have an account?
+                هل لديك حساب بالفعل؟
                 <router-link to="/login" class="text-primary fw-bold">
-                  Log In
+                  تسجيل الدخول
                 </router-link>
               </small>
             </div>
 
             <small class="d-block text-center text-muted mt-3">
-              By clicking Sign Up, you agree to the terms of use.
+              بالنقر على "انشاء حساب"، فإنك توافق على شروط الاستخدام.
             </small>
           </form>
         </div>
