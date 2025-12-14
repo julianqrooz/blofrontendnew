@@ -42,7 +42,7 @@ const rejister = async () => {
         <!-- الفورم -->
         <div class="col-12 col-md-8 col-lg-5 col-xl-4">
           <form
-            @submit.prevent="register"
+            @submit.prevent="rejister "
             class="p-4 p-md-5 border rounded-4 shadow-lg bg-white"
           >
             <div class="form-floating mb-4">
