@@ -11,8 +11,8 @@ const email = ref('')
 const password = ref('')
 
 const register = async () => {
-  if (!name.value || !email.value || password.value.length < 6) {
-    alert('يرجى ملء جميع الحقول وكلمة مرور قوية (6 أحرف على الأقل)')
+  if (!name.value || !email.value || password.value) {
+    alert('يرجى ملء جميع الحقول ')
     return
   }
 
