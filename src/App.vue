@@ -87,6 +87,13 @@ const closeMenu = () => {
           </template>
         </ul>
       </div>
+      <div 
+        class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-lg-none"
+        style="z-index: 1030; display: none;"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-hidden="true"
+      ></div>
     </div>
   </nav>
 
@@ -96,6 +103,20 @@ const closeMenu = () => {
 </template>
 
 <style scoped>
+  #navbarSupportedContent.show + .bg-dark {
+  display: block !important;
+}
+
+/* نرفع المنيو فوق الـ overlay */
+#navbarSupportedContent {
+  position: relative;
+  z-index: 1040;
+}
+
+/* منع scroll لما المنيو مفتوح (ده بيخلي الـ scroll يقفل المنيو تلقائيًا) */
+#navbarSupportedContent.show {
+  overflow: hidden;
+}
 /* تحسينات صغيرة للموبايل */
 .navbar-brand {
   font-size: 1.5rem;
