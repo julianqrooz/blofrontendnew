@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '../stores/auth'  // تأكد من المسار
+import { useAuthStore } from '../stores/counter'  // تأكد من المسار
 
 const router = useRouter()
 const authStore = useAuthStore()
