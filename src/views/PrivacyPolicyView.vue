@@ -1,3 +1,6 @@
+<script setup>
+import FooterHome from "../components/FooterHome.vue";
+</script>
 <template>
   <div class="container py-5 my-5">
     <div class="row justify-content-center">
@@ -78,6 +81,7 @@
       </div>
     </div>
   </div>
+  <FooterHome class="mt-auto" />
 </template>
 
 <style scoped>
