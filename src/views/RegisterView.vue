@@ -1,27 +1,29 @@
 <script setup>
-import FooterHome from "../components/FooterHome.vue";
-import { api, useAuthStore } from "../stores/counter";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
-const name = ref("");
-const email = ref("");
-const password = ref("");
-const authuser = useAuthStore();
-const router = useRouter();
-const rejister = async () => {
-  try {
-    if (!name.value || !email.value || !password.value)
-      return alert("كل الحقول مطلوبه");
-    await authuser.register({
-      name: name.value,
-      email: email.value,
-      password: password.value,
-    });
-    router.push("/");
-  } catch {
-    alert("فشل التسجيل");
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'  // تأكد من المسار
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+const name = ref('')
+const email = ref('')
+const password = ref('')
+
+const register = async () => {
+  if (!name.value || !email.value || password.value.length < 6) {
+    alert('يرجى ملء جميع الحقول وكلمة مرور قوية (6 أحرف على الأقل)')
+    return
   }
-};
+
+  try {
+    await authStore.register({ name: name.value, email: email.value, password: password.value })
+    alert('تم إنشاء الحساب بنجاح!')
+    router.push('/')
+  } catch (err) {
+    alert('فشل التسجيل، ربما البريد مستخدم بالفعل')
+  }
+}
 </script>
 <template>
   <div class="d-flex flex-column min-vh-100">
