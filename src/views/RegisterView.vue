@@ -79,7 +79,7 @@ const register = async () => {
                 id="floatingPassword"
                 placeholder="Password"
                 required
-                minlength="6"
+               
               />
               <label for="floatingPassword">Password</label>
             </div>
