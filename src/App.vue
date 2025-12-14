@@ -14,9 +14,7 @@ const closeMenu = () => {
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
     <div class="container px-4 px-lg-5">
-      <RouterLink class="navbar-brand fw-bold fs-4" to="/"
-        >Julia Blog</RouterLink
-      >
+      <RouterLink class="navbar-brand fw-bold fs-4" to="/">جوليا</RouterLink>
 
       <button
         class="navbar-toggler"
@@ -35,7 +33,7 @@ const closeMenu = () => {
           <!-- Home -->
           <li class="nav-item">
             <router-link class="nav-link" to="/" @click="closeMenu"
-              >Home</router-link
+              >الرئيسية</router-link
             >
           </li>
 
@@ -43,17 +41,17 @@ const closeMenu = () => {
           <template v-if="authuser.isLoggedIn">
             <li class="nav-item">
               <router-link class="nav-link" to="/my-blog" @click="closeMenu"
-                >My Blog</router-link
+                >مقالاتي</router-link
               >
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/create" @click="closeMenu"
-                >Blog Writing</router-link
+                >كتابة مقالة</router-link
               >
             </li>
             <li class="nav-item">
               <span class="nav-link text-white me-3">
-                Welcome {{ authuser.user?.name || "User" }}
+                مرحبا {{ authuser.user?.name || "User" }}
               </span>
             </li>
             <li class="nav-item">
@@ -65,7 +63,7 @@ const closeMenu = () => {
                   router.push('/login');
                 "
               >
-                Sign out
+                تسجيل خروج
               </button>
             </li>
           </template>
@@ -74,7 +72,7 @@ const closeMenu = () => {
           <template v-else>
             <li class="nav-item">
               <router-link class="nav-link" to="/login" @click="closeMenu"
-                >Log In</router-link
+                >تسجيل الدخول</router-link
               >
             </li>
             <li class="nav-item">
@@ -83,7 +81,7 @@ const closeMenu = () => {
                 to="/register"
                 @click="closeMenu"
               >
-                Sign Up
+                انشاء حساب
               </router-link>
             </li>
           </template>
