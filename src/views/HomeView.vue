@@ -31,7 +31,7 @@ import FooterHome from "../components/FooterHome.vue";
                   class="btn btn-primary btn-lg px-5 py-3 me-sm-3"
                   to="/register"
                 >
-                  تسجيل
+                  انشاء حساب
                 </router-link>
                 <router-link
                   class="btn btn-outline-light btn-lg px-5 py-3"
