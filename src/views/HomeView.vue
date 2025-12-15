@@ -1,6 +1,8 @@
 <script setup>
 import SectionHome from "../components/SectionHome.vue";
 import FooterHome from "../components/FooterHome.vue";
+import { useAuthStore } from "../stores/counter";
+const authuser = useAuthStore();
 </script>
 <template>
   <div>
@@ -15,17 +17,26 @@ import FooterHome from "../components/FooterHome.vue";
             <div class="my-5">
               <h1
                 class="display-4 display-md-3 fw-bolder text-white mb-3 mb-md-4"
+                v-if="authuser.isLoggedIn"
               >
-                مرحبا بك
+                {{ authuser.user?.name }}مرحبا بك
               </h1>
               <p class="lead fw-normal text-white-50 mb-4 mb-md-5 fs-5">
                 أهلاً بكم ، مساحتكم المخصصة للحصول على رؤى معمقة وأدلة عملية
                 ومناقشات هادفة حول التكنولوجيا وأسلوب الحياة والمساعي الإبداعية.
               </p>
+              <router-link
+                class="btn btn-primary btn-lg px-5 py-3 me-sm-3"
+                to="/create"
+                v-if="authuser.isLoggedIn"
+              >
+                كتابة مقال
+              </router-link>
 
               <!-- الأزرار -->
               <div
                 class="d-grid gap-3 d-sm-flex justify-content-center justify-content-md-start"
+                v-if="!authuser.isLoggedIn"
               >
                 <router-link
                   class="btn btn-primary btn-lg px-5 py-3 me-sm-3"
@@ -48,7 +59,7 @@ import FooterHome from "../components/FooterHome.vue";
             <img
               class="img-fluid rounded-3 shadow-lg"
               src="https://images.pexels.com/photos/5052875/pexels-photo-5052875.jpeg"
-              alt="Julia Blog Hero Image"
+              alt="Julia Image"
               style="max-height: 400px; object-fit: cover"
             />
           </div>
