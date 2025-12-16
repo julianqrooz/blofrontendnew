@@ -6,13 +6,17 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const authuser = useAuthStore();
 const posts = ref([]);
-const fetchepost = async () => {
+const currentPage = ref(1);
+const totalPages = ref(1);
+const fetchepost = async (page = 1) => {
   try {
-    const response = await api.get("/posts");
+    const response = await api.get(`/posts?page=${page}`);
 
     // التحقق من الاستجابة والبيانات
     if (response && response.data) {
-      posts.value = response.data;
+      posts.value = response.data.posts;
+      currentPage.value = response.data.currentPage;
+      totalPages.value = response.data.totalPages;
     } else {
       alert("لا يوجد مقالات متاحة");
     }
@@ -21,6 +25,11 @@ const fetchepost = async () => {
     console.error("حدث خطأ أثناء جلب المقالات:", error);
     // يمكنك إضافة رسالة تنبيه للمستخدم هنا
   }
+};
+const changePage = (page) => {
+  if (page < 1 || page > totalPages.value) return;
+  fetchepost(page);
+  window.scrollTo(0, 0);
 };
 onMounted(() => {
   fetchepost();
@@ -116,6 +125,40 @@ const viewPost = (id) => {
           </div>
         </div>
       </aside>
+    </div>
+    <div v-if="totalPages > 1">
+      <!-- أزرار التنقل بين الصفحات -->
+      <nav
+        aria-label="Page navigation example "
+        class="d-flex justify-content-center mt-4"
+      >
+        <ul class="pagination">
+          <li class="page-item" :class="{ disabled: currentPage === 1 }">
+            <button class="page-link" @click="changePage(currentPage - 1)">
+              Previous
+            </button>
+          </li>
+          <li
+            class="page-item"
+            v-for="page in totalPages"
+            :key="page"
+            :class="{ active: page === currentPage }"
+          >
+            <button class="page-link" @click="changePage(page)">
+              {{ page }}
+            </button>
+          </li>
+
+          <li
+            class="page-item"
+            :class="{ disabled: currentPage === totalPages }"
+          >
+            <button class="page-link" @click="changePage(currentPage + 1)">
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
   </section>
 </template>
